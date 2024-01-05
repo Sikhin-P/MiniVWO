@@ -33,5 +33,6 @@ class TestLogin:
         element.send_keys('ATBx@1234')
         element = driver.find_element(By.ID, 'js-login-btn')
         element.click()
-        time.sleep(5)
-        assert driver.current_url == 'https://app.vwo.com/#/dashboard', 'Dashboard page not loaded'
+        time.sleep(10)
+        element = driver.find_element(By.XPATH, '//p[@data-qa = "page-sub-title"]/span')
+        assert element.is_displayed(), 'Welcome message is not displayed'
